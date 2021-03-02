@@ -18,12 +18,12 @@ class RunTestCase(object):
 
         # 输出报告（按天生成文件夹）
         self.report_path = os.path.join(PROJECT_DIR['result_dir'], datetime.datetime.now().strftime('%Y-%m-%d'))
-        self.report_name = 'hrms'
+        self.report_name_prefix = 'hrms'
 
     def main(self):
         """执行测试用例"""
         discover = unittest.defaultTestLoader.discover(start_dir=self.case_path, pattern=self.execute_script_pattern)
-        runner = HtmlTestRunner.HTMLTestRunner(output=self.report_path, report_name=self.report_name,
+        runner = HtmlTestRunner.HTMLTestRunner(output=self.report_path, report_name=self.report_name_prefix,
                                                report_title='Test Report')
         runner.run(discover)
 
