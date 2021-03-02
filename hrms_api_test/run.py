@@ -1,3 +1,6 @@
+"""
+执行主程序
+"""
 # -*- coding:utf-8 -*-
 import os
 import datetime
