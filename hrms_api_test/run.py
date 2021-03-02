@@ -18,7 +18,7 @@ class RunTestCase(object):
 
         # 输出报告（按天生成文件夹）
         self.report_path = os.path.join(PROJECT_DIR['result_dir'], datetime.datetime.now().strftime('%Y-%m-%d'))
-        self.report_name = 'udts'
+        self.report_name = 'hrms'
 
     def main(self):
         """执行测试用例"""
