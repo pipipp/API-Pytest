@@ -4,6 +4,7 @@
 """
 
 import os
+import hashlib
 import platform
 import configparser
 import pandas as pd
@@ -27,6 +28,20 @@ def read_excel(filename='test_api.xlsx', sheet_name=0):
     data.fillna('', inplace=True)  # 替换所有的缺失值为空字符""
     new_list = data.values.tolist()
     return new_list
+
+
+def get_file_md5(filepath):
+    """
+    获取文件内容的MD5值
+    :param filepath: 文件所在路径
+    :return:
+    """
+    with open(filepath, 'rb') as file:
+        data = file.read()
+    diff_check = hashlib.md5()
+    diff_check.update(data)
+    md5_code = diff_check.hexdigest()
+    return md5_code
 
 
 def read_ini_config(section, option='', filepath='config.ini', get_all=False):
