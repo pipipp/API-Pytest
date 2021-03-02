@@ -6,8 +6,8 @@
 import os
 import logging
 
-from hrms_api_test.settings import PROJECT_DIR
 from logging.handlers import TimedRotatingFileHandler
+from hrms_api_test.settings import PROJECT_DIR
 
 
 class Logger(object):

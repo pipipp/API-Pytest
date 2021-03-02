@@ -8,6 +8,7 @@ import platform
 import configparser
 import pandas as pd
 
+from hrms_api_test.public_module.logger_module import logger
 from hrms_api_test.settings import PROJECT_DIR
 
 
