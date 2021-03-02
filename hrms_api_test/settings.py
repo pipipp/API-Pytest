@@ -1,10 +1,10 @@
 # -*- coding:utf-8 -*-
 import os
 
-# 根目录
+# 项目根目录
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# 项目目录
+# 项目各模块目录
 PROJECT_DIR = {
     'logs_dir': os.path.join(BASE_DIR, 'logs'),
     'test_case_dir': os.path.join(BASE_DIR, 'test_case'),
