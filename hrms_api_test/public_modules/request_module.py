@@ -5,7 +5,7 @@
 
 import requests
 
-from hrms_api_test.public_module.logger_module import logger
+from hrms_api_test.public_modules.logger_module import LOGGER
 
 
 class RequestProcess(object):
@@ -21,7 +21,7 @@ class RequestProcess(object):
         :param method: 请求方法，默认GET
         :param timeout: 请求超时时间，默认30秒
         :param params: 额外参数，例如：Headers、cookie
-        :return: result
+        :return: reports
         """
         result = dict(
             status=True,

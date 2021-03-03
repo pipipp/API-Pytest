@@ -1,7 +1,7 @@
 import unittest
 
-from hrms_api_test.test_case.case_top import CaseTop
-from hrms_api_test.public_module.function_module import read_excel
+from hrms_api_test.test_case_scripts.case_top import CaseTop
+from hrms_api_test.public_modules.function_module import read_excel
 
 
 TEST_FILE_NAME = 'test_api.xlsx'

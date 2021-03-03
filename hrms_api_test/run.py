@@ -1,5 +1,5 @@
 """
-执行主程序
+自动化测试启动程序
 """
 # -*- coding:utf-8 -*-
 import os
@@ -8,29 +8,52 @@ import unittest
 import HtmlTestRunner
 
 
-from hrms_api_test.public_module.logger_module import logger
-from hrms_api_test.settings import PROJECT_DIR
+from hrms_api_test.public_modules.logger_module import LOGGER
+from hrms_api_test.public_modules.email_module import MAIL_PUSH
+from hrms_api_test.settings import TEST_LAUNCH_CONFIG, OUTPUT_REPORT_CONFIG, MAIL_CONFIG
 
 
-class RunTestCase(object):
+class TestLaunch(object):
 
-    def __init__(self):
-        # 测试脚本
-        self.case_path = PROJECT_DIR['test_case_dir']  # 测试脚本所在目录
-        self.execute_script_pattern = 'test_*.py'  # 定义需要启动哪些测试脚本
+    def __init__(self, test_scripts_path, report_path, report_name_prefix, report_title,
+                 execute_script_pattern='test_*.py'):
+        """
+        测试启动配置
+        :param test_scripts_path: 测试脚本所在目录
+        :param report_path: 输出报告路径
+        :param report_name_prefix: 报告名称前缀
+        :param report_title: 报告内容标题
+        :param execute_script_pattern: 定义需要启动哪些测试脚本
+        """
+        self.test_scripts_path = test_scripts_path
+        self.report_path = report_path
+        self.report_name_prefix = report_name_prefix
+        self.report_title = report_title
+        self.execute_script_pattern = execute_script_pattern
 
-        # 输出报告（按天生成文件夹）
-        self.report_path = os.path.join(PROJECT_DIR['result_dir'], datetime.datetime.now().strftime('%Y-%m-%d'))
-        self.report_name_prefix = 'hrms'
+    def run_test_case(self):
+        """执行测试用例，并生成测试报告"""
+        discover = unittest.defaultTestLoader.discover(start_dir=self.test_scripts_path,
+                                                       pattern=self.execute_script_pattern)
+        runner = HtmlTestRunner.HTMLTestRunner(output=self.report_path, report_name=self.report_name_prefix,
+                                               report_title=self.report_title)
+        runner.run(discover)
+
+    @staticmethod
+    def mail_push():
+        """将生成的测试报告推送到邮箱"""
+        if MAIL_CONFIG['on_off'] == 'on':
+            MAIL_PUSH.send_mail(sender=MAIL_CONFIG['sender'], receiver=MAIL_CONFIG['receiver'],
+                                subject=MAIL_CONFIG['subject'],
+                                body='<p> This is a test <p>', attachments=['temp.txt'])
 
     def main(self):
-        """执行测试用例"""
-        discover = unittest.defaultTestLoader.discover(start_dir=self.case_path, pattern=self.execute_script_pattern)
-        runner = HtmlTestRunner.HTMLTestRunner(output=self.report_path, report_name=self.report_name_prefix,
-                                               report_title='Test Report')
-        runner.run(discover)
+        self.run_test_case()
+        self.mail_push()
 
 
 if __name__ == '__main__':
-    test_case = RunTestCase()
-    test_case.main()
+    test_launch = TestLaunch(TEST_LAUNCH_CONFIG['test_scripts_path'], OUTPUT_REPORT_CONFIG['report_path'],
+                             OUTPUT_REPORT_CONFIG['report_name_prefix'], OUTPUT_REPORT_CONFIG['report_title'],
+                             TEST_LAUNCH_CONFIG['execute_script_pattern'])
+    test_launch.main()

@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 """
-Test Case 父类（包含所有的公共方法）
+Test case scripts 父类（包含所有的公共方法）
 """
 import unittest
 
 from urllib.parse import urljoin
-from hrms_api_test.public_module.logger_module import logger
-from hrms_api_test.public_module.request_module import RequestProcess
+from hrms_api_test.public_modules.logger_module import LOGGER
+from hrms_api_test.public_modules.request_module import RequestProcess
 
 
 class CaseTop(unittest.TestCase):

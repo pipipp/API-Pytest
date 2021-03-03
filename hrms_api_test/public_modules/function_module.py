@@ -9,8 +9,8 @@ import platform
 import configparser
 import pandas as pd
 
-from hrms_api_test.public_module.logger_module import logger
-from hrms_api_test.settings import PROJECT_DIR
+from hrms_api_test.public_modules.logger_module import LOGGER
+from hrms_api_test.settings import MODULE_DIR
 
 
 def read_excel(filename='test_api.xlsx', sheet_name=0):
@@ -20,7 +20,7 @@ def read_excel(filename='test_api.xlsx', sheet_name=0):
     :param sheet_name: 工作表名
     :return: 包含所有行的列表
     """
-    filepath = os.path.join(PROJECT_DIR['test_file_dir'], filename)
+    filepath = os.path.join(MODULE_DIR['test_file_dir'], filename)
     if not os.path.exists(filepath):
         raise ValueError(f'({filepath}) - 文件不存在，请检查！')
 

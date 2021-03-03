@@ -9,7 +9,8 @@ import smtplib
 from email.header import Header
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-from hrms_api_test.public_module.logger_module import logger
+from hrms_api_test.public_modules.logger_module import LOGGER
+from hrms_api_test.settings import MAIL_CONFIG
 
 
 class MailPush(object):
@@ -52,7 +53,7 @@ class MailPush(object):
             # 添加附件到邮件中
             for each_att in attachments:
                 if not os.path.exists(each_att):
-                    logger.error(f'该文件不存在：{each_att}，请检查，发件人：{sender}，收件人：{receiver}，主旨：{subject}')
+                    LOGGER.error(f'添加附件失败，请检查文件：（{each_att}），发件人：{sender}，收件人：{receiver}，主旨：{subject}')
                     continue
                 att_file = open(each_att, 'rb')
                 file_obj = MIMEText(att_file.read(), 'base64', 'utf-8')
@@ -81,15 +82,18 @@ class MailPush(object):
             sftp_obj.login(user=self.smtp_user, password=self.smtp_password)
             # 发送邮件
             sftp_obj.sendmail(sender, receiver, mail_obj.as_string())
-            logger.debug(f'发送邮件成功，发件人：{sender}，收件人：{receiver}，主旨：{subject}')
+            LOGGER.debug(f'发送邮件成功，发件人：{sender}，收件人：{receiver}，主旨：{subject}')
             # 退出登陆
             sftp_obj.quit()
         except Exception as ex:
-            logger.error(f'发送邮件失败，错误原因：{ex}，发件人：{sender}，收件人：{receiver}，主旨：{subject}')
+            LOGGER.error(f'发送邮件失败，错误原因：{ex}，发件人：{sender}，收件人：{receiver}，主旨：{subject}')
+
+
+MAIL_PUSH = MailPush(MAIL_CONFIG['smtp_server'], MAIL_CONFIG['smtp_port'],
+                     MAIL_CONFIG['smtp_user'], MAIL_CONFIG['smtp_password'])
 
 
 if __name__ == '__main__':
     # 邮件推送测试
-    mail_push = MailPush(smtp_server='smtp.qq.com', smtp_port=25, smtp_user='evanliuu@qq.com', smtp_password='')
-    mail_push.send_mail(sender='evanliuu@qq.com', receiver='ziran.pipi@qq.com', subject='Test',
+    MAIL_PUSH.send_mail(sender=MAIL_CONFIG['sender'], receiver=MAIL_CONFIG['receiver'], subject=MAIL_CONFIG['subject'],
                         body='<p> This is a test <p>', attachments=['temp.txt'])
