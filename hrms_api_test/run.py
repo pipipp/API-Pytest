@@ -30,6 +30,7 @@ class TestLaunch(object):
         self.report_name_prefix = report_name_prefix
         self.report_title = report_title
         self.execute_script_pattern = execute_script_pattern
+        self.report_generate_path = None
 
     def run_test_case(self):
         """执行测试用例，并生成测试报告"""
@@ -37,15 +38,15 @@ class TestLaunch(object):
                                                        pattern=self.execute_script_pattern)
         runner = HtmlTestRunner.HTMLTestRunner(output=self.report_path, report_name=self.report_name_prefix,
                                                report_title=self.report_title)
-        runner.run(discover)
+        result = runner.run(discover)
+        self.report_generate_path = list(result.report_files)  # 保存报告生成路径
 
-    @staticmethod
-    def mail_push():
+    def mail_push(self):
         """将生成的测试报告推送到邮箱"""
         if MAIL_CONFIG['on_off'] == 'on':
             MAIL_PUSH.send_mail(sender=MAIL_CONFIG['sender'], receiver=MAIL_CONFIG['receiver'],
                                 subject=MAIL_CONFIG['subject'],
-                                body='<p> This is a test <p>', attachments=['temp.txt'])
+                                body='<p> This is a test <p>', attachments=self.report_generate_path)
 
     def main(self):
         self.run_test_case()

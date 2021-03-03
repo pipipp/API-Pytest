@@ -33,7 +33,7 @@ class MailPush(object):
         """
         构建邮件对象（主旨、正文、附件）
         :param sender: 发件人
-        :param receiver: 接收人
+        :param receiver: 收件人
         :param subject: 邮件主旨
         :param body: 邮件正文（超文本格式）
         :param attachments: 附件列表
@@ -55,6 +55,7 @@ class MailPush(object):
                 if not os.path.exists(each_att):
                     LOGGER.error(f'添加附件失败，请检查文件：（{each_att}），发件人：{sender}，收件人：{receiver}，主旨：{subject}')
                     continue
+
                 att_file = open(each_att, 'rb')
                 file_obj = MIMEText(att_file.read(), 'base64', 'utf-8')
                 att_file.close()
@@ -62,6 +63,8 @@ class MailPush(object):
                 file_obj["Content-Disposition"] = 'attachment;filename="{}"' \
                     .format(Header(os.path.basename(each_att).encode('utf-8'), 'utf-8'))
                 mail_obj.attach(file_obj)
+
+                LOGGER.debug(f'添加附件成功，文件：（{each_att}），发件人：{sender}，收件人：{receiver}，主旨：{subject}')
         return mail_obj
 
     def send_mail(self, sender, receiver, subject, body, attachments=[]):
@@ -69,7 +72,7 @@ class MailPush(object):
         发送邮件
         QQ邮箱 smtp_password 获取方式：进入QQ邮箱-设置-账户-开启服务-开启POP3/SMTP服务，然后点击生成授权码
         :param sender: 发件人
-        :param receiver: 接收人
+        :param receiver: 收件人
         :param subject: 邮件主旨
         :param body: 邮件正文（超文本格式）
         :param attachments: 附件列表

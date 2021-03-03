@@ -31,14 +31,14 @@ LOG_CONFIG = {
 
 # 邮件推送配置
 MAIL_CONFIG = {
-    'on_off': 'off',
-    'smtp_server': 'smtp.qq.com',
-    'smtp_port': 25,
-    'smtp_user': 'evan.liu@qq.com',
-    'smtp_password': '',
-    'sender': 'evan.liu@qq.com',
-    'receiver': 'ziran.pipi@qq.com',
-    'subject': '接口自动化测试报告',
+    'on_off': 'off',  # 邮件推送开关：on/off
+    'smtp_server': 'smtp.qq.com',  # smtp服务器（使用QQ邮箱作为服务器）
+    'smtp_port': 25,  # smtp端口（使用QQ邮箱端口）
+    'smtp_user': 'evan.liu@qq.com',  # smtp用户名（使用邮箱登陆账号）
+    'smtp_password': '',  # smtp密码（授权码），QQ邮箱获取方式：进入QQ邮箱-设置-账户-开启服务-开启POP3/SMTP服务，然后点击生成授权码
+    'sender': 'evan.liu@qq.com',  # 发件人
+    'receiver': 'ziran.pipi@qq.com',  # 收件人
+    'subject': '接口自动化测试报告',  # 邮件主旨
 }
 
 # 输出报告配置
