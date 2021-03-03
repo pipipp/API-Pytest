@@ -6,7 +6,7 @@
 import logging
 
 from logging.handlers import TimedRotatingFileHandler
-from hrms_api_test.settings import LOG_CONFIG
+from ziran_api_test.settings import LOG_CONFIG
 
 
 class Logger(object):

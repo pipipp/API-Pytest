@@ -1,13 +1,14 @@
+# -*- coding:utf-8 -*-
 """
 项目环境配置
 """
-# -*- coding:utf-8 -*-
+
 import os
 import datetime
 
 
 # 项目名称
-PROJECT_NAME = 'hrms'
+PROJECT_NAME = 'ziran'
 
 # 项目根目录
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -44,7 +45,7 @@ MAIL_CONFIG = {
 # 输出报告配置
 OUTPUT_REPORT_CONFIG = {
     'report_path': os.path.join(MODULE_DIR['reports_dir'], datetime.datetime.now().strftime('%Y-%m-%d')),
-    'report_name_prefix': 'hrms',
+    'report_name_prefix': PROJECT_NAME,
     'report_title': '自动化测试报告',
 }
 

@@ -5,7 +5,7 @@
 
 import requests
 
-from hrms_api_test.public_modules.logger_module import LOGGER
+from ziran_api_test.public_modules.logger_module import LOGGER
 
 
 class RequestProcess(object):

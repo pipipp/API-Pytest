@@ -1,16 +1,18 @@
-"""
-自动化测试启动程序
-"""
 # -*- coding:utf-8 -*-
+"""
+测试启动程序
+"""
+# @Author   : 孜然v
+# @Python   : 3.7.4
+
 import os
 import datetime
 import unittest
 import HtmlTestRunner
 
-
-from hrms_api_test.public_modules.logger_module import LOGGER
-from hrms_api_test.public_modules.email_module import MAIL_PUSH
-from hrms_api_test.settings import TEST_LAUNCH_CONFIG, OUTPUT_REPORT_CONFIG, MAIL_CONFIG
+from ziran_api_test.public_modules.logger_module import LOGGER
+from ziran_api_test.public_modules.email_module import MAIL_PUSH
+from ziran_api_test.settings import TEST_LAUNCH_CONFIG, OUTPUT_REPORT_CONFIG, MAIL_CONFIG
 
 
 class TestLaunch(object):
