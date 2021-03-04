@@ -44,9 +44,16 @@ MAIL_CONFIG = {
 
 # 输出报告配置
 OUTPUT_REPORT_CONFIG = {
-    'report_path': os.path.join(MODULE_DIR['reports_dir'], datetime.datetime.now().strftime('%Y-%m-%d')),
-    'report_name_prefix': PROJECT_NAME,
-    'report_title': '自动化测试报告',
+    'HtmlTestRunner': {
+        'report_path': os.path.join(MODULE_DIR['reports_dir'], datetime.datetime.now().strftime('%Y-%m-%d')),
+        'report_name': PROJECT_NAME,
+        'report_title': f'{PROJECT_NAME}_自动化测试报告',
+    },
+    'BeautifulReport': {
+        'report_path': os.path.join(MODULE_DIR['reports_dir'], datetime.datetime.now().strftime('%Y-%m-%d')),
+        'report_name': f'{datetime.datetime.now().strftime("%H_%M_%S")}_{PROJECT_NAME}',
+        'report_title': f'{PROJECT_NAME}_自动化测试报告',
+    },
 }
 
 # 测试启动配置
