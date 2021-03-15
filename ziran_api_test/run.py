@@ -9,10 +9,10 @@ import os
 import datetime
 import unittest
 
-from ziran_api_test.public_modules.logger_module import LOGGER
-from ziran_api_test.public_modules.email_module import MAIL_PUSH
+from ziran_api_test.utils.logger_module import LOGGER
+from ziran_api_test.utils.email_module import MAIL_PUSH
 from ziran_api_test.settings import TEST_LAUNCH_CONFIG, MAIL_CONFIG
-from ziran_api_test.public_modules.output_report_module import run_and_generate_test_report_from_br
+from ziran_api_test.utils.output_report_module import run_and_generate_test_report_from_br
 
 
 class TestLaunch(object):

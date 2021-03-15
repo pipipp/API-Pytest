@@ -5,7 +5,7 @@
 
 import requests
 
-from ziran_api_test.public_modules.logger_module import LOGGER
+from ziran_api_test.utils.logger_module import LOGGER
 
 
 class RequestProcess(object):

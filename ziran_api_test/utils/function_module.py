@@ -9,7 +9,7 @@ import platform
 import configparser
 import pandas as pd
 
-from ziran_api_test.public_modules.logger_module import LOGGER
+from ziran_api_test.utils.logger_module import LOGGER
 from ziran_api_test.settings import MODULE_DIR
 
 

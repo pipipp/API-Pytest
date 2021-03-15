@@ -1,7 +1,7 @@
 import unittest
 
-from ziran_api_test.test_case_scripts.case_top import CaseTop
-from ziran_api_test.public_modules.load_case_file_module import read_test_data
+from ziran_api_test.test_scripts.case_top import CaseTop
+from ziran_api_test.utils.load_case_file_module import read_test_data
 
 
 TEST_DATA = read_test_data('test_api.xlsx')  # 读取用例文件数据
