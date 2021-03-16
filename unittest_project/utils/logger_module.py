@@ -6,7 +6,7 @@
 import logging
 
 from logging.handlers import TimedRotatingFileHandler
-from ziran_api_test.settings import LOG_CONFIG
+from unittest_project.settings import LOG_CONFIG
 
 
 class Logger(object):

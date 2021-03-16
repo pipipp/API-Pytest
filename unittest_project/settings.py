@@ -8,7 +8,7 @@ import datetime
 
 
 # 项目名称
-PROJECT_NAME = 'ziran'
+PROJECT_NAME = 'unittest_project'
 
 # 项目根目录
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))

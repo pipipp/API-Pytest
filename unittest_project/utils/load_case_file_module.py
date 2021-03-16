@@ -2,7 +2,7 @@
 """
 用例文件加载模块
 """
-from ziran_api_test.utils.function_module import read_excel
+from unittest_project.utils.function_module import read_excel
 
 
 def read_test_data(filename):

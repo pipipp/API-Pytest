@@ -5,8 +5,8 @@ Test case scripts 父类（包含所有的公共方法）
 import unittest
 
 from urllib.parse import urljoin
-from ziran_api_test.utils.logger_module import LOGGER
-from ziran_api_test.utils.request_module import RequestProcess
+from unittest_project.utils.logger_module import LOGGER
+from unittest_project.utils.request_module import RequestProcess
 
 
 class CaseTop(unittest.TestCase):

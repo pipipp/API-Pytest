@@ -9,8 +9,8 @@ import platform
 import configparser
 import pandas as pd
 
-from ziran_api_test.utils.logger_module import LOGGER
-from ziran_api_test.settings import MODULE_DIR
+from unittest_project.utils.logger_module import LOGGER
+from unittest_project.settings import MODULE_DIR
 
 
 def read_excel(filename='test_api.xlsx', sheet_name=0):

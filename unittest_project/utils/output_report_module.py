@@ -6,8 +6,8 @@
 import HtmlTestRunner
 
 from BeautifulReport import BeautifulReport
-from ziran_api_test.utils.logger_module import LOGGER
-from ziran_api_test.settings import OUTPUT_REPORT_CONFIG
+from unittest_project.utils.logger_module import LOGGER
+from unittest_project.settings import OUTPUT_REPORT_CONFIG
 
 
 def run_and_generate_test_report_from_htr(suite):

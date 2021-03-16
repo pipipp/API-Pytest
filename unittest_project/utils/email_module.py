@@ -9,8 +9,8 @@ import smtplib
 from email.header import Header
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-from ziran_api_test.utils.logger_module import LOGGER
-from ziran_api_test.settings import MAIL_CONFIG
+from unittest_project.utils.logger_module import LOGGER
+from unittest_project.settings import MAIL_CONFIG
 
 
 class MailPush(object):
