@@ -2,7 +2,7 @@
 """
 用例文件加载模块
 """
-from unittest_project.utils.function_module import read_excel
+from unittest_project.utils.common_module import read_excel
 
 
 def read_test_data(filename):
