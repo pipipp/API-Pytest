@@ -18,15 +18,23 @@ def add_common_report(case, http, expected):
         allure.attach(case)
 
     with allure.step('请求对象'):
-        allure.attach(http['path'], 'path')
-        allure.attach(http['method'], 'method')
+        allure.attach(http['path'])
+        allure.attach(http['method'])
+
         with allure.step('headers'):
-            for key, value in http['headers'].itmes():
-                allure.attach(value, key)
+            keys = http['headers'].keys()
+            values = http['headers'].values()
+            for k, v in zip(keys, values):
+                allure.attach(v, k)
+
         with allure.step('params'):
-            for key, value in http['params'].itmes():
-                allure.attach(value, key)
+            keys = http['params'].keys()
+            values = http['params'].values()
+            for k, v in zip(keys, values):
+                allure.attach(v, k)
 
     with allure.step('预期结果'):
-        for key, value in expected['response'].itmes():
-            allure.attach(value, key)
+        keys = expected['response'].keys()
+        values = expected['response'].values()
+        for k, v in zip(keys, values):
+            allure.attach(str(v), k)

@@ -31,7 +31,6 @@ def pytest_addoption(parser):
 def env(request):
     """获取config目录里面的环境配置文件"""
     config_path = os.path.join(request.config.rootdir,
-                               'pytest_project',
                                'config',
                                request.config.getoption('environment'),
                                'config.yaml')

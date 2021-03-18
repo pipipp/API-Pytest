@@ -4,8 +4,8 @@ import allure
 import pytest
 import requests
 
-from utils import get_yaml_test_data
-from utils import add_common_report
+from utils.tools import get_yaml_test_data
+from utils.allures import add_common_report
 from config.settings import MODULE_DIR
 
 # 获取测试数据
