@@ -15,11 +15,11 @@ def add_common_report(case, http, expected):
     :return:
     """
     with allure.step('测试用例名称'):
-        allure.attach(case)
+        allure.attach(case, 'case')
 
     with allure.step('请求对象'):
-        allure.attach(http['path'])
-        allure.attach(http['method'])
+        allure.attach(http['path'], 'path')
+        allure.attach(http['method'], 'method')
 
         with allure.step('headers'):
             keys = http['headers'].keys()
