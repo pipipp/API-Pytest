@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 """
-通用模块
+工具模块
 """
 
 import yaml
