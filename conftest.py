@@ -10,5 +10,5 @@ def pytest_sessionfinish(session):
     :param session:
     :return:
     """
-    with open("{}/results/environment.properties".format(session.config.rootdir), "w") as f:
+    with open("{}/allure-results/environment.properties".format(session.config.rootdir), "w") as f:
         f.write("env=test\ndomain=http://127.0.0.1:8000/")
